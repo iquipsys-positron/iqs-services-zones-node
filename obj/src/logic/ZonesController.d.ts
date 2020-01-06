@@ -1,0 +1,34 @@
+import { ConfigParams } from 'pip-services3-commons-node';
+import { IConfigurable } from 'pip-services3-commons-node';
+import { IReferences } from 'pip-services3-commons-node';
+import { IReferenceable } from 'pip-services3-commons-node';
+import { FilterParams } from 'pip-services3-commons-node';
+import { PagingParams } from 'pip-services3-commons-node';
+import { DataPage } from 'pip-services3-commons-node';
+import { ICommandable } from 'pip-services3-commons-node';
+import { CommandSet } from 'pip-services3-commons-node';
+import { ZoneV1 } from '../data/version1/ZoneV1';
+import { IZonesController } from './IZonesController';
+export declare class ZonesController implements IConfigurable, IReferenceable, ICommandable, IZonesController {
+    private static _defaultConfig;
+    private _dependencyResolver;
+    private _eventRulesClient;
+    private _eventRulesConnector;
+    private _persistence;
+    private _commandSet;
+    configure(config: ConfigParams): void;
+    setReferences(references: IReferences): void;
+    getCommandSet(): CommandSet;
+    getZones(correlationId: string, filter: FilterParams, paging: PagingParams, callback: (err: any, page: DataPage<ZoneV1>) => void): void;
+    getZoneById(correlationId: string, id: string, callback: (err: any, zone: ZoneV1) => void): void;
+    private calculatePolygonBoundaries;
+    private calculateLineBoundaries;
+    private calculateCenter;
+    private calculateGeometry;
+    private fixZone;
+    createZone(correlationId: string, zone: ZoneV1, callback: (err: any, zone: ZoneV1) => void): void;
+    updateZone(correlationId: string, zone: ZoneV1, callback: (err: any, zone: ZoneV1) => void): void;
+    deleteZoneById(correlationId: string, id: string, callback: (err: any, zone: ZoneV1) => void): void;
+    unsetObject(correlationId: string, orgId: string, objectId: string, callback: (err: any) => void): void;
+    unsetGroup(correlationId: string, orgId: string, groupId: string, callback: (err: any) => void): void;
+}
